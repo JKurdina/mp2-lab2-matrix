@@ -201,6 +201,7 @@ public:
   }
 
   using TDynamicVector<TDynamicVector<T>>::operator[];
+  TDynamicMatrix(const TDynamicVector < TDynamicVector <T>>& p) :TDynamicVector < TDynamicVector <T>>(p) {};
 
   // сравнение
   bool operator==(const TDynamicMatrix& m) const noexcept
@@ -211,35 +212,39 @@ public:
   // матрично-скалярные операции
   TDynamicVector<T> operator*(const T& val)
   {
-      TDynamicMatrix tmp(sz);
-      for (size_t i = 0; i < sz; i++)
-          tmp.pMem[i] = pMem[i] * val;
-      return tmp;
+      return TDynamicVector<TDynamicVector<T>>::operator*(val);
+//      TDynamicMatrix tmp(sz);
+//      for (size_t i = 0; i < sz; i++)
+//          tmp.pMem[i] = pMem[i] * val;
+//      return tmp;
   }
 
   // матрично-векторные операции
   TDynamicVector<T> operator*(const TDynamicVector<T>& v)
   {
-      TDynamicVector<T> tmp(sz);
-      for (size_t i = 0; i < sz; i++)
-          tmp[i] = pMem[i] * v;
-      return tmp;
+      return TDynamicVector<TDynamicVector<T>>::operator*(v);
+      //TDynamicVector<T> tmp(sz);
+      //for (size_t i = 0; i < sz; i++)
+          //tmp[i] = pMem[i] * v;
+      //return tmp;
   }
 
   // матрично-матричные операции
   TDynamicMatrix operator+(const TDynamicMatrix& m)
   {
-      TDynamicMatrix tmp(sz);
-      for (size_t i = 0; i < sz; i++)
-          tmp.pMem[i] = pMem[i] + m.pMem[i];
-      return tmp;
+      return TDynamicVector<TDynamicVector<T>>::operator+(m);
+      //TDynamicMatrix tmp(sz);
+      //for (size_t i = 0; i < sz; i++)
+          //tmp.pMem[i] = pMem[i] + m.pMem[i];
+      //return tmp;
   }
   TDynamicMatrix operator-(const TDynamicMatrix& m)
   {
-      TDynamicMatrix tmp(sz);
-      for (size_t i = 0; i < sz; i++)
-          tmp.pMem[i] = pMem[i] - m.pMem[i];
-      return tmp;
+      return TDynamicVector<TDynamicVector<T>>::operator-(m);
+      //TDynamicMatrix tmp(sz);
+      //for (size_t i = 0; i < sz; i++)
+          //tmp.pMem[i] = pMem[i] - m.pMem[i];
+      /return tmp;
   }
   TDynamicMatrix operator*(const TDynamicMatrix& m)
   {
