@@ -210,7 +210,7 @@ public:
   }
 
   // матрично-скалярные операции
-  TDynamicVector<T> operator*(const T& val)
+  TDynamicMatrix<T> operator*(const T& val)
   {
       return TDynamicVector<TDynamicVector<T>>::operator*(val);
 //      TDynamicMatrix tmp(sz);
